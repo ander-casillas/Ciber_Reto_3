@@ -1,2 +1,2 @@
-Proyecto ciber reto 3, txiribitones de rio
-![Esquema del proyecto](Diagrama.drawio)
+Proyecto de ciberseguridad reto 3, por Txiribitones de Rio
+![Esquema del proyecto](Diagrama/Diagrama.drawio)
