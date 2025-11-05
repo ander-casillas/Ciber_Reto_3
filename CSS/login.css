@@ -152,7 +152,6 @@ body {
   left: 0;
   border: 2px solid var(--main-color);
   border-radius: 5px;
-  box-shadow: 3px 3px var(--main-color);
   background-color: var(--input-out-of-focus);
   transition: all 0.3s;
   flex: 0 0 25px;
