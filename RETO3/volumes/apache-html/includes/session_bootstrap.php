@@ -7,7 +7,7 @@ $cookieParams = [
     'lifetime' => 0,
     'path' => '/',
     'domain' => '',
-    'secure' => false,   // true si HTTPS
+    'secure' => true,
     'httponly' => true,
     'samesite' => 'Lax',
 ];

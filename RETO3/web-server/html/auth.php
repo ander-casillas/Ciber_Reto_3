@@ -7,7 +7,7 @@
 session_start();
  
 // 🔹 Configuración LDAP
-$ldap_host = "ldap://10.11.0.89:389";
+$ldap_host = "ldap://10.11.0.127:389";
 $admin_dn  = "cn=admin,dc=txiribiton,dc=local";
 $admin_pass = "admin123";
 $base_users = "ou=Users,dc=txiribiton,dc=local";

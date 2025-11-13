@@ -28,8 +28,8 @@ $user_role = $is_logged_in ? implode(', ', $_SESSION['groups'] ?? []) : '';
                             <span>Inicio</span>
                         </a>
                     </li>
-                    <li class="<?php echo (isset($active_page) && $active_page == 'explorar') ? 'active' : ''; ?>">
-                        <a href="#">
+                    <li class="<?php echo (isset($active_page) && $active_page == 'tarjetas') ? 'active' : ''; ?>">
+                        <a href="tarjetas.php">
                             <i class="fas fa-compass"></i>
                             <span>Projectos</span>
                         </a>
