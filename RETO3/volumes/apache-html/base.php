@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/includes/session_bootstrap.php';
+require_once __DIR__ . '/includes/auth.php';
+
 $is_logged_in = isset($_SESSION['username']);
 $user_name = $is_logged_in ? $_SESSION['username'] : '';
 $user_role = $is_logged_in ? implode(', ', $_SESSION['groups'] ?? []) : '';
@@ -21,33 +23,52 @@ $user_role = $is_logged_in ? implode(', ', $_SESSION['groups'] ?? []) : '';
                 <i class="fa-solid fa-building-columns"></i>
             </div>
             <nav class="menu">
-                <ul>
-                    <li class="<?php echo (isset($active_page) && $active_page == 'inicio') ? 'active' : ''; ?>">
-                        <a href="index.php">
-                            <i class="fas fa-home"></i>
-                            <span>Inicio</span>
-                        </a>
-                    </li>
-                    <li class="<?php echo (isset($active_page) && $active_page == 'tarjetas') ? 'active' : ''; ?>">
-                        <a href="tarjetas.php">
-                            <i class="fa-solid fa-credit-card"></i>
-                            <span>Tarjetas</span>
-                        </a>
-                    </li>
-                    <li class="<?php echo (isset($active_page) && $active_page == 'gastos') ? 'active' : ''; ?>">
-                        <a href="gastos.php">
-                            <i class="fas fa-wallet"></i>
-                            <span>Gastos</span>
-                        </a>
-                    </li>
-                    <li class="<?php echo (isset($active_page) && $active_page == 'analisis') ? 'active' : ''; ?>">
-                        <a href="analisis.php">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Análisis</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+    <ul>
+        <?php if ($is_logged_in && user_has_role('administrador')): ?>
+            <!-- ADMINISTRADOR: puede ver todo -->
+            <li class="<?php echo (isset($active_page) && $active_page == 'inicio') ? 'active' : ''; ?>">
+                <a href="index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li class="<?php echo (isset($active_page) && $active_page == 'tarjetas') ? 'active' : ''; ?>">
+                <a href="tarjetas.php">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Tarjetas</span>
+                </a>
+            </li>
+            <li class="<?php echo (isset($active_page) && $active_page == 'gastos') ? 'active' : ''; ?>">
+                <a href="gastos.php">
+                    <i class="fas fa-wallet"></i>
+                    <span>Gastos</span>
+                </a>
+            </li>
+            <li class="<?php echo (isset($active_page) && $active_page == 'analisis') ? 'active' : ''; ?>">
+                <a href="analisis.php">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Análisis</span>
+                </a>
+            </li>
+
+        <?php elseif ($is_logged_in && user_has_role('empleado')): ?>
+            <!-- EMPLEADO: solo Tarjetas -->
+             <li class="<?php echo (isset($active_page) && $active_page == 'inicio') ? 'active' : ''; ?>">
+                <a href="index.php">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li class="<?php echo (isset($active_page) && $active_page == 'tarjetas') ? 'active' : ''; ?>">
+                <a href="tarjetas.php">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Tarjetas</span>
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
+
             <div class="profile">
                 <?php if ($is_logged_in): ?>
                     <div class="avatar">

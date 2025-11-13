@@ -1,4 +1,9 @@
 <?php
+
+require_once __DIR__ . '/includes/auth.php';
+require_login();
+require_role(['administrador', 'panchito', 'empleado']); // solo el admin puede entrar aquí
+
 $page_title = 'Txiribitones - Panel Principal';
 $active_page = 'inicio';
 $page_header = 'Bienvenido a Txiribitones';

@@ -1,4 +1,9 @@
 <?php
+
+require_once __DIR__ . '/includes/auth.php';
+require_login();
+require_role(['administrador', 'empleado']); // empleado y admin pueden entrar
+
 $page_title = 'Txiribitones - Mis tarjetas';
 $active_page = 'tarjetas';
 $page_header = 'Gestionar mis tarjetas';
