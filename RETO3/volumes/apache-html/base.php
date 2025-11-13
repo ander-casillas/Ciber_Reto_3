@@ -30,8 +30,20 @@ $user_role = $is_logged_in ? implode(', ', $_SESSION['groups'] ?? []) : '';
                     </li>
                     <li class="<?php echo (isset($active_page) && $active_page == 'tarjetas') ? 'active' : ''; ?>">
                         <a href="tarjetas.php">
-                            <i class="fas fa-compass"></i>
-                            <span>Projectos</span>
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span>Tarjetas</span>
+                        </a>
+                    </li>
+                    <li class="<?php echo (isset($active_page) && $active_page == 'gastos') ? 'active' : ''; ?>">
+                        <a href="gastos.php">
+                            <i class="fas fa-wallet"></i>
+                            <span>Gastos</span>
+                        </a>
+                    </li>
+                    <li class="<?php echo (isset($active_page) && $active_page == 'analisis') ? 'active' : ''; ?>">
+                        <a href="analisis.php">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Análisis</span>
                         </a>
                     </li>
                 </ul>

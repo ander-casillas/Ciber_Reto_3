@@ -21,7 +21,7 @@ ob_start();
             <i class="fas fa-clock"></i>
         </div>
         <div class="card-info">
-            <h3>104096239426</h3>
+            <h3>10</h3>
             <p>Tareas Pendientes</p>
         </div>
     </div>

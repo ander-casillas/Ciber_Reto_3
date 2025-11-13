@@ -104,6 +104,8 @@ body {
     text-decoration: none;
     font-weight: 500;
     letter-spacing: 0.3px;
+    position: relative;
+    z-index: 2;
 }
 
 .menu a i {
@@ -402,4 +404,99 @@ body.login-page {
     border-radius: 8px;
     border: 1px solid rgba(255, 107, 107, 0.3);
 }
-            
+     
+
+    /* TARJETAS */
+
+.credit-cards {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.credit-card {
+    width: 360px;
+    height: 200px;
+    border-radius: 14px;
+    padding: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform .22s ease, box-shadow .22s ease, opacity .22s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    outline: none;
+}
+
+
+/* Diferentes fondos para cada tarjeta */
+.credit-card[data-card="1"] {
+    background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+}
+.credit-card[data-card="2"] {
+    background: linear-gradient(135deg, #1b5e20 0%, #43a047 100%);
+}
+
+/* Elementos internos */
+.credit-card .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.credit-card .chip {
+    width: 56px;
+    height: 40px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.25);
+    display: inline-block;
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,0.08);
+}
+.credit-card .bank {
+    font-weight: 700;
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+.credit-card .number {
+    margin-top: 14px;
+    font-size: 1.35rem;
+    letter-spacing: 3px;
+    font-family: monospace;
+}
+.credit-card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.92rem;
+    opacity: 0.95;
+}
+.credit-card .holder {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.credit-card .expiry {
+    font-weight: 600;
+}
+
+/* Estado activo */
+.credit-card.active {
+    transform: scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* Indicador de no activo */
+.credit-card:not(.active) {
+    opacity: 0.86;
+}
+
+/* Accesibilidad foco */
+.credit-card:focus {
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.08), 0 12px 30px rgba(0,0,0,0.18);
+}
+@media (max-width: 800px) {
+    .credit-cards { flex-direction: column; }
+    .credit-card { height: 160px; }
+}
