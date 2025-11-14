@@ -1,14 +1,18 @@
-modulepath /usr/lib/ldap
-moduleload back_mdb
+modulepath      /usr/lib/ldap
+moduleload      back_mdb
 
 include         /etc/ldap/schema/core.schema
 include         /etc/ldap/schema/cosine.schema
 include         /etc/ldap/schema/inetorgperson.schema
 include         /etc/ldap/schema/nis.schema
 
-
 pidfile         /var/run/slapd/slapd.pid
 argsfile        /var/run/slapd/slapd.args
+
+# no permitir bind anónimo
+disallow        bind_anon
+
+loglevel        stats
 
 database        mdb
 maxsize         1073741824
@@ -18,3 +22,16 @@ rootpw          ${ROOTPW_HASH}
 directory       "/var/lib/ldap"
 
 index           objectClass eq
+
+# proteger contraseñas
+access to attrs=userPassword
+    by dn="${ROOTDN}" write
+    by self write
+    by anonymous auth
+    by * none
+
+# nada de lecturas anónimas
+access to *
+    by dn="${ROOTDN}" write
+    by users read
+    by anonymous none
